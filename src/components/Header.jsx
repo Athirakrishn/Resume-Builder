@@ -1,8 +1,42 @@
-import React from 'react'
+
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import  { Link } from 'react-router-dom'
 
 function Header() {
+  const projectIntro=" A Resume Builder App is an essential tool for job seekers looking to create polished and effective resumes. By combining ease of use with professional design options, these apps empower users to present their qualifications confidently and increase their chances of landing job interviews."
   return (
-    <div>Header</div>
+    
+      <Box sx={{ flexGrow: 1 ,  }}> 
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+         
+          >
+        <img width={'30px'} src="https://play-lh.googleusercontent.com/JbYSifXLD71pQ8NB7tyaSsReFwfU3mVsqDBdpf__-B10RWdCHB_X2U5nfL4_7j9M0WE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"  alt="" />
+          </IconButton>
+          <Typography  variant="h6" component="div" sx={{ flexGrow: 1 ,fontWeight:"600" }}>
+           <Link to={'/resume'}> Resume Builder</Link>
+          </Typography>
+            <Tooltip title={projectIntro}>
+            <Button sx={{fontWeight:"600",fontFamily:"solway"}} color="inherit">ABOUT US</Button>
+          </Tooltip>
+         
+        </Toolbar>
+      </AppBar>
+    </Box>
+    
   )
 }
 
