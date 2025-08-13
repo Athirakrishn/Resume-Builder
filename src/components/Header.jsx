@@ -13,8 +13,8 @@ function Header() {
   const projectIntro=" A Resume Builder App is an essential tool for job seekers looking to create polished and effective resumes. By combining ease of use with professional design options, these apps empower users to present their qualifications confidently and increase their chances of landing job interviews."
   return (
     
-      <Box sx={{ flexGrow: 1 ,  }}> 
-      <AppBar position="static">
+      <Box sx={{ flexGrow: 1  }}> 
+      <AppBar position="static" sx={{backgroundColor:"rgb(21, 70, 77)"}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -23,11 +23,11 @@ function Header() {
             aria-label="menu"
          
           >
-        <img width={'30px'} src="https://play-lh.googleusercontent.com/JbYSifXLD71pQ8NB7tyaSsReFwfU3mVsqDBdpf__-B10RWdCHB_X2U5nfL4_7j9M0WE" />
+        <img width={'30px'} src=" https://img.freepik.com/free-vector/choice-worker-concept_23-2148621781.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"  alt="" />
           </IconButton>
           <Typography  variant="h6" component="div" sx={{ flexGrow: 1 ,fontWeight:"600" }}>
-           <Link to={'/resume'}> Resume Builder</Link>
+           <Link to={'/'} style={{color:"white",textDecoration:"none"}}> Resume Builder</Link>
           </Typography>
             <Tooltip title={projectIntro}>
             <Button sx={{fontWeight:"600",fontFamily:"solway"}} color="inherit">ABOUT US</Button>

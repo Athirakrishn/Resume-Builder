@@ -8,11 +8,11 @@ import { FaWhatsapp } from "react-icons/fa";
 function Footer() {
   return (
     <>
-    <div className=" d-flex justify-content-center text-align-center text-light" style={{backgroundColor:"rgb(105, 40, 190)", height:"300px",width:"100%"}}>
-       <div className='text-center'>
+    <div className=" d-flex justify-content-center text-align-center text-light" style={{backgroundColor:"rgb(21, 70, 77)", height:"300px",width:"100%"}}>
+       <div className='text-center my-5'>
           <h1 >Contact Us</h1>     
-          <h6 > <MdOutlineMailOutline /> Rbuilder@gmqil.com</h6>
-          <h6 > <FaPhoneAlt /> +123456789</h6>
+          <h6 > <MdOutlineMailOutline /> Resume_Builder@gmqil.com</h6>
+          <h6 > <FaPhoneAlt /> +12 93456789</h6>
           <h5>Connect With Us</h5>
          <div className="d-flex justify-content-center fs-4 mt-3">
         <FaInstagram className='me-3' />
