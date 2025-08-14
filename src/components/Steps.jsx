@@ -64,9 +64,76 @@ function Steps() {
           <h3>Personal Details</h3>
           <div className="d-flex row p-3" >
               <TextField id="standard-basic-name" label="Full Name" variant="standard" />
+              <TextField id="standard-basic-name" label="Job Title" variant="standard" />
+              <TextField id="standard-basic-name" label="Location" variant="standard" />
           </div>
         </div>
       )
+       case 1 : return (
+        <div>
+          <h3>Contact Details</h3>
+          <div className="d-flex row p-3" >
+              <TextField id="standard-basic-name" label="Email" variant="standard" />
+              <TextField id="standard-basic-name" label="Phone Number" variant="standard" />
+              <TextField id="standard-basic-name" label="GitHub profile link" variant="standard" />
+              <TextField id="standard-basic-name" label="LinkedIn profile link" variant="standard" />
+              <TextField id="standard-basic-name" label="Portfolio" variant="standard" />
+          </div>
+        </div>
+      )
+     case 2 : return (
+        <div>
+          <h3>Education Details</h3>
+          <div className="d-flex row p-3" >
+              <TextField id="standard-basic-name" label="Course Name" variant="standard" />
+              <TextField id="standard-basic-name" label="College Name " variant="standard" />
+              <TextField id="standard-basic-name" label="University" variant="standard" />
+               <TextField id="standard-basic-name" label="Year of Passout" variant="standard" />
+
+          </div>
+        </div>
+      )
+      case 3 : return (
+        <div>
+          <h3>Professional Details</h3>
+          <div className="d-flex row p-3" >
+              <TextField id="standard-basic-name" label="Job or internship" variant="standard" />
+              <TextField id="standard-basic-name" label="Company Name" variant="standard" />
+              <TextField id="standard-basic-name" label="Company Location" variant="standard" />
+              <TextField id="standard-basic-name" label="Duration" variant="standard" />
+
+          </div>
+        </div>
+      )
+      case 4 : return (
+        <div>
+          <h3></h3>
+          <div className="d-flex row p-3" >
+              <TextField id="standard-basic-name" label="Full Name" variant="standard" />
+              <TextField id="standard-basic-name" label="Job Title" variant="standard" />
+              <TextField id="standard-basic-name" label="Location" variant="standard" />
+          </div>
+        </div>
+      )
+       cdefault : return (
+        <div>
+          <h3>Personal Details</h3>
+          <div className="d-flex row p-3" >
+              <TextField id="standard-basic-name" label="Full Name" variant="standard" />
+              <TextField id="standard-basic-name" label="Job Title" variant="standard" />
+              <TextField id="standard-basic-name" label="Location" variant="standard" />
+          </div>
+        </div>
+      )
+       case 5: return (
+        <div>
+          <h3>Professional Summary</h3>
+          <div className="d-flex row p-3" >
+              <TextField id="standard-basic-name" label="write a short summary of your self" variant="standard"  multiline rows={4} defaultValue={''}/>
+          </div>
+        </div>
+      )
+       default : return null
     }
 
   }
@@ -108,7 +175,7 @@ function Steps() {
         <React.Fragment>
           {/* view of each step */}
        <Box>
-
+       {renderStepArrayContent(activeStep)}
        </Box>
 
           <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
