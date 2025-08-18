@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 
 
-function Steps() {
-  const steps = ['Basic Information', 'Contact Details', 'Education Details','Work Experience','Skills & Certification','Skills & Preview'];
- 
 
+function Steps() {
+   const steps = ['Basic Information', 'Contact Details', 'Education Details','Work Experience','Skills & Certification','Skills & Preview'];
+
+  const skillSuggestionArray =['HTML','CSS','BOOTSTRAP'];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -107,24 +108,26 @@ function Steps() {
       )
       case 4 : return (
         <div>
-          <h3></h3>
-          <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Full Name" variant="standard" />
-              <TextField id="standard-basic-name" label="Job Title" variant="standard" />
-              <TextField id="standard-basic-name" label="Location" variant="standard" />
+          <h3>skills</h3>
+          <div className="d-flex align-items-center justify-content-between p-3"  >
+              <TextField style={{width:"400px"}} id="standard-basic-name" label="Add skill" variant="standard" />
+              <Button variant="text" className=''>ADD</Button>  
           </div>
+           <h5>Suggestion</h5>
+           <div className="d-flex flex-wrap justify-content-between my-3">
+            {
+              skillSuggestionArray.map(userSkil=>(
+              <Button className='m-1' key={userSkil} variant='contained'> {userSkil}</Button>
+              ))
+            }
+           </div>
+           <h5>AddedSkill:</h5>
+            <div className="d-flex flex-wrap justify-content-between my-3">
+              <span className='btn btn-primary justify-content-center text-align-center'> REACT <button className='text-light btn'>X</button></span>
+            </div>
         </div>
       )
-       cdefault : return (
-        <div>
-          <h3>Personal Details</h3>
-          <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Full Name" variant="standard" />
-              <TextField id="standard-basic-name" label="Job Title" variant="standard" />
-              <TextField id="standard-basic-name" label="Location" variant="standard" />
-          </div>
-        </div>
-      )
+      
        case 5: return (
         <div>
           <h3>Professional Summary</h3>
