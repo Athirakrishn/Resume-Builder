@@ -16,6 +16,37 @@ function Steps() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
+  //state for storing user input data
+  const [userInput,setUserInput]= React.useState({
+    personalData:{
+      name:'',
+      jobTitle:'',
+      location:'',
+      email:'',
+      phone:'',
+      github:'',
+      linkedin:'',
+      portfolio:''
+    },
+    Education:{
+      course:'',
+      college:'',
+      university:'',
+      year:''
+    },
+    experience:{
+      jobRole:'',
+      company:'',
+      jobLocation:'',
+      duration:''
+    },
+    skills:[],
+    summary:''
+  })
+console.log(userInput);
+
+
+
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -62,11 +93,11 @@ function Steps() {
     switch(stepCount){
       case 0 : return (
         <div>
-          <h3>Personal Details</h3>
+          <h3>Personal Details</h3> 
           <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Full Name" variant="standard" />
-              <TextField id="standard-basic-name" label="Job Title" variant="standard" />
-              <TextField id="standard-basic-name" label="Location" variant="standard" />
+              <TextField id="standard-basic-name" label="Full Name" variant="standard" onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,name:e.target.value}}) } />
+              <TextField id="standard-basic-name" label="Job Title" variant="standard" onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,jobTitle:e.target.value}}) }  />
+              <TextField id="standard-basic-name" label="Location" variant="standard"  onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,location:e.target.value}}) }/>
           </div>
         </div>
       )
@@ -74,11 +105,11 @@ function Steps() {
         <div>
           <h3>Contact Details</h3>
           <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Email" variant="standard" />
-              <TextField id="standard-basic-name" label="Phone Number" variant="standard" />
-              <TextField id="standard-basic-name" label="GitHub profile link" variant="standard" />
-              <TextField id="standard-basic-name" label="LinkedIn profile link" variant="standard" />
-              <TextField id="standard-basic-name" label="Portfolio" variant="standard" />
+              <TextField id="standard-basic-name" label="Email" variant="standard"                onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,email:e.target.value}}) }  />
+              <TextField id="standard-basic-name" label="Phone Number" variant="standard"         onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,phone:e.target.value}}) }  />
+              <TextField id="standard-basic-name" label="GitHub profile link" variant="standard"  onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,github:e.target.value}}) }  />
+              <TextField id="standard-basic-name" label="LinkedIn profile link" variant="standard"onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,linkedin:e.target.value}}) }   />
+              <TextField id="standard-basic-name" label="Portfolio" variant="standard"            onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,portfolio:e.target.value}}) }   />
           </div>
         </div>
       )
@@ -86,10 +117,10 @@ function Steps() {
         <div>
           <h3>Education Details</h3>
           <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Course Name" variant="standard" />
-              <TextField id="standard-basic-name" label="College Name " variant="standard" />
-              <TextField id="standard-basic-name" label="University" variant="standard" />
-               <TextField id="standard-basic-name" label="Year of Passout" variant="standard" />
+              <TextField id="standard-basic-name" label="Course Name" variant="standard"      onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,course:e.target.value}}) }/>
+              <TextField id="standard-basic-name" label="College Name " variant="standard"    onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,college:e.target.value}}) } />
+              <TextField id="standard-basic-name" label="University" variant="standard"       onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,university:e.target.value}}) } />
+               <TextField id="standard-basic-name" label="Year of Passout" variant="standard" onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,year:e.target.value}}) } />
 
           </div>
         </div>
@@ -97,11 +128,11 @@ function Steps() {
       case 3 : return (
         <div>
           <h3>Professional Details</h3>
-          <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Job or internship" variant="standard" />
-              <TextField id="standard-basic-name" label="Company Name" variant="standard" />
-              <TextField id="standard-basic-name" label="Company Location" variant="standard" />
-              <TextField id="standard-basic-name" label="Duration" variant="standard" />
+          <div className="d-flex row p-3" > 
+              <TextField id="standard-basic-name" label="Job or internship" variant="standard"  onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,jobRole:e.target.value}}) } />
+              <TextField id="standard-basic-name" label="Company Name" variant="standard"       onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,company:e.target.value}}) } />
+              <TextField id="standard-basic-name" label="Company Location" variant="standard"   onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,jobLocation:e.target.value}}) }/>
+              <TextField id="standard-basic-name" label="Duration" variant="standard"           onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,duration:e.target.value}}) } />
 
           </div>
         </div>

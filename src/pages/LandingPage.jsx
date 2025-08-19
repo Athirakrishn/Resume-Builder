@@ -4,9 +4,9 @@ import  { Link } from 'react-router-dom'
 
 function LandingPage() {
   return (
-    <>
+    <> 
     <section className='container-fluid first' id='part1' style={{width:"100%",overflowX:"hidden",height:"450px",backgroundImage:"url('https://images.pexels.com/photos/7988216/pexels-photo-7988216.jpeg')",backgroundPosition:"top",backgroundAttachment:"fixed",backgroundSize:"cover"}}>
-      <div className="row pt-5 " >
+      <div className="row pt-5 " > 
         <div className="col-12 col-md-4"></div>
         <div className="col-12 col-md-4 box border py-5 rounded mt-5 text-center mb-4 text-light" style={{backgroundColor:"rgb(0, 0, 0,0.3)"}}>
           <h3>Designed to get hired</h3>
