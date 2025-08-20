@@ -6,13 +6,15 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import { ImTelegram } from 'react-icons/im';
+import { GiSkills } from 'react-icons/gi';
 
 
 
 function Steps() {
    const steps = ['Basic Information', 'Contact Details', 'Education Details','Work Experience','Skills & Certification','Skills & Preview'];
 
-  const skillSuggestionArray =['HTML','CSS','BOOTSTRAP'];
+  const skillSuggestionArray =['HTML','CSS','BOOTSTRAP','PHP','REACT','MONGODB','NODEJS','JAVASCRIPT','TAILWIND'];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -43,6 +45,9 @@ function Steps() {
     skills:[],
     summary:''
   })
+//
+ const userSkillRef = React.useRef()
+
 console.log(userInput);
 
 
@@ -88,6 +93,24 @@ console.log(userInput);
   const handleReset = () => {
     setActiveStep(0);
   };
+
+//add skill 
+const addSkill=(inputSkill)=>{
+  if(inputSkill){
+   if(userInput.skills.includes(inputSkill)){
+    alert("Given skill is already existing!!! Add another...")
+   }else{
+    // userInput.skills.push(inputSkill)
+    setUserInput({...userInput,skills:[...userInput.skills,inputSkill]})
+
+   }
+  }
+}
+//remove skill  
+const removeSkill = (skill)=>{
+  setUserInput({...userInput,skills:userInput.skills.filter(item=>item!=Skill)})
+}
+
   //render the content corresponding to the array content  
   const renderStepArrayContent = (stepCount) =>{
     switch(stepCount){
@@ -95,9 +118,9 @@ console.log(userInput);
         <div>
           <h3>Personal Details</h3> 
           <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Full Name" variant="standard" onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,name:e.target.value}}) } />
-              <TextField id="standard-basic-name" label="Job Title" variant="standard" onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,jobTitle:e.target.value}}) }  />
-              <TextField id="standard-basic-name" label="Location" variant="standard"  onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,location:e.target.value}}) }/>
+              <TextField id="standard-basic-name" label="Full Name" variant="standard" onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,name:e.target.value}}) }  value={userInput.personalData.name}/>
+              <TextField id="standard-basic-name" label="Job Title" variant="standard" onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,jobTitle:e.target.value}}) } value={userInput.personalData.jobTitle} />
+              <TextField id="standard-basic-name" label="Location" variant="standard"  onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,location:e.target.value}}) } value={userInput.personalData.location}/>
           </div>
         </div>
       )
@@ -105,11 +128,11 @@ console.log(userInput);
         <div>
           <h3>Contact Details</h3>
           <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Email" variant="standard"                onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,email:e.target.value}}) }  />
-              <TextField id="standard-basic-name" label="Phone Number" variant="standard"         onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,phone:e.target.value}}) }  />
-              <TextField id="standard-basic-name" label="GitHub profile link" variant="standard"  onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,github:e.target.value}}) }  />
-              <TextField id="standard-basic-name" label="LinkedIn profile link" variant="standard"onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,linkedin:e.target.value}}) }   />
-              <TextField id="standard-basic-name" label="Portfolio" variant="standard"            onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,portfolio:e.target.value}}) }   />
+              <TextField id="standard-basic-name" label="Email" variant="standard"                onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,email:e.target.value}}) }     value={userInput.personalData.email}/>
+              <TextField id="standard-basic-name" label="Phone Number" variant="standard"         onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,phone:e.target.value}}) }     value={userInput.personalData.phone} />
+              <TextField id="standard-basic-name" label="GitHub profile link" variant="standard"  onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,github:e.target.value}}) }    value={userInput.personalData.github} />
+              <TextField id="standard-basic-name" label="LinkedIn profile link" variant="standard"onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,linkedin:e.target.value}}) }  value={userInput.personalData.linkedin} />
+              <TextField id="standard-basic-name" label="Portfolio" variant="standard"            onChange={e=>setUserInput({...userInput,personalData:{...userInput.personalData,portfolio:e.target.value}}) } value={userInput.personalData.portfolio}  />
           </div>
         </div>
       )
@@ -117,10 +140,10 @@ console.log(userInput);
         <div>
           <h3>Education Details</h3>
           <div className="d-flex row p-3" >
-              <TextField id="standard-basic-name" label="Course Name" variant="standard"      onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,course:e.target.value}}) }/>
-              <TextField id="standard-basic-name" label="College Name " variant="standard"    onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,college:e.target.value}}) } />
-              <TextField id="standard-basic-name" label="University" variant="standard"       onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,university:e.target.value}}) } />
-               <TextField id="standard-basic-name" label="Year of Passout" variant="standard" onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,year:e.target.value}}) } />
+              <TextField id="standard-basic-name" label="Course Name" variant="standard"      onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,course:e.target.value}}) }  value={userInput.Education.course}/>
+              <TextField id="standard-basic-name" label="College Name " variant="standard"    onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,college:e.target.value}}) }     value={userInput.Education.college} />
+              <TextField id="standard-basic-name" label="University" variant="standard"       onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,university:e.target.value}}) }  value={userInput.Education.university} />
+               <TextField id="standard-basic-name" label="Year of Passout" variant="standard" onChange={e=>setUserInput({...userInput, Education:{...userInput. Education,year:e.target.value}}) }        value={userInput.Education.year}  />
 
           </div>
         </div>
@@ -129,10 +152,10 @@ console.log(userInput);
         <div>
           <h3>Professional Details</h3>
           <div className="d-flex row p-3" > 
-              <TextField id="standard-basic-name" label="Job or internship" variant="standard"  onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,jobRole:e.target.value}}) } />
-              <TextField id="standard-basic-name" label="Company Name" variant="standard"       onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,company:e.target.value}}) } />
-              <TextField id="standard-basic-name" label="Company Location" variant="standard"   onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,jobLocation:e.target.value}}) }/>
-              <TextField id="standard-basic-name" label="Duration" variant="standard"           onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,duration:e.target.value}}) } />
+              <TextField id="standard-basic-name" label="Job or internship" variant="standard"  onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,jobRole:e.target.value}}) }     value={userInput.experience.jobRole} />
+              <TextField id="standard-basic-name" label="Company Name" variant="standard"       onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,company:e.target.value}}) }     value={userInput.experience.company}  />
+              <TextField id="standard-basic-name" label="Company Location" variant="standard"   onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,jobLocation:e.target.value}}) } value={userInput.experience.jobLocation}  />
+              <TextField id="standard-basic-name" label="Duration" variant="standard"           onChange={e=>setUserInput({...userInput, experience:{...userInput. experience,duration:e.target.value}}) }    value={userInput.experience.duration} />
 
           </div>
         </div>
@@ -141,24 +164,31 @@ console.log(userInput);
         <div>
           <h3>skills</h3>
           <div className="d-flex align-items-center justify-content-between p-3"  >
-              <TextField style={{width:"400px"}} id="standard-basic-name" label="Add skill" variant="standard" />
-              <Button variant="text" className=''>ADD</Button>  
+              {/* <TextField style={{width:"400px"}} id="standard-basic-name" label="Add skill" variant="standard" /> */}
+              <input ref={userSkillRef} type="text" className='form-control' placeholder='ADD SKILL'/>
+              <Button variant="text" className='' onClick={()=>addSkill(userSkillRef.current.value)}>ADD</Button>  
           </div>
            <h5>Suggestion</h5>
            <div className="d-flex flex-wrap justify-content-between my-3">
             {
-              skillSuggestionArray.map(userSkil=>(
-              <Button className='m-1' key={userSkil} variant='contained'> {userSkil}</Button>
+              skillSuggestionArray.map(userSkill=>(
+              <Button onClick={()=>addSkill(userSkill)} className='m-1' key={userSkill} variant='contained'> {userSkill}</Button>
               ))
-            }
+            } 
            </div>
            <h5>AddedSkill:</h5>
             <div className="d-flex flex-wrap justify-content-between my-3">
-              <span className='btn btn-primary justify-content-center text-align-center'> REACT <button className='text-light btn'>X</button></span>
-            </div>
+              {
+                userInput.skills.length>0?
+                 userInput.skills.map(skill=>(
+                   <span key={skill} className='btn btn-primary justify-content-center text-align-center'>{skill}<button className='text-light btn' onClick={removeSkill}>X</button></span>
+
+                 )):
+                <span>  NIL</span>
+                          }
+              </div>
         </div>
       )
-      
        case 5: return (
         <div>
           <h3>Professional Summary</h3>

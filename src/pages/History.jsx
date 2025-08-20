@@ -15,7 +15,7 @@ function History() {
       <Box component="section" className='container-fluid'>
         <div className='row'>
           <div className='col-md-4'>
-
+            
             <Paper elevation={3} sx={{ my:5, textAlign:"center" ,p: 5 }} > 
               <div className="d-flex text-align-center justify-content-between" >
                 <h6>Review at : <br/>
