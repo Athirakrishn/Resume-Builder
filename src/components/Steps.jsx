@@ -11,7 +11,7 @@ import { GiSkills } from 'react-icons/gi';
 
 
 
-function Steps() {
+function Steps({userInput,setUserInput}) {
    const steps = ['Basic Information', 'Contact Details', 'Education Details','Work Experience','Skills & Certification','Skills & Preview'];
 
   const skillSuggestionArray =['HTML','CSS','BOOTSTRAP','PHP','REACT','MONGODB','NODEJS','JAVASCRIPT','TAILWIND'];
@@ -19,32 +19,7 @@ function Steps() {
   const [skipped, setSkipped] = React.useState(new Set());
 
   //state for storing user input data
-  const [userInput,setUserInput]= React.useState({
-    personalData:{
-      name:'',
-      jobTitle:'',
-      location:'',
-      email:'',
-      phone:'',
-      github:'',
-      linkedin:'',
-      portfolio:''
-    },
-    Education:{
-      course:'',
-      college:'',
-      university:'',
-      year:''
-    },
-    experience:{
-      jobRole:'',
-      company:'',
-      jobLocation:'',
-      duration:''
-    },
-    skills:[],
-    summary:''
-  })
+ 
 //
  const userSkillRef = React.useRef()
 
@@ -181,8 +156,8 @@ const removeSkill = (skill)=>{
               {
                 userInput.skills.length>0?
                  userInput.skills.map(skill=>(
-                   <span key={skill} className='btn btn-primary justify-content-center text-align-center'>{skill}<button className='text-light btn' onClick={removeSkill}>X</button></span>
-
+                   <span key={skill} className='btn btn-primary justify-content-center text-align-center'>{skill}<button className='text-light btn' onClick={()=>removeSkill(skill)}>X</button></span>
+    
                  )):
                 <span>  NIL</span>
                           }
