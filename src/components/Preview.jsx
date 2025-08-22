@@ -19,8 +19,9 @@ function Preview({userInput}) {
      
 
     { 
+    userInput.personalData.name!="" &&
    <>
-      userInput.personalData.name!="" &&
+      
          <Stack direction={'row'} sx={{justifyContent:"flex-end"}}>  
             <Stack direction={'row'}>
               {/* download */}

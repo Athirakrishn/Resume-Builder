@@ -177,6 +177,18 @@ const removeSkill = (skill)=>{
 
   }
 
+  //add resume
+  const handleAddResume=()=>{
+  //api call 
+  const {name,jobTitle,location}=userInput.personalData
+  if(name&&jobTitle&&location){
+     alert("API CALLED")
+  }else{
+     alert("fill the form")
+  }
+
+  }
+
   return (
     
     <>  
@@ -233,9 +245,13 @@ const removeSkill = (skill)=>{
                 Skip
               </Button>
             )}
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button>
+           
+              {
+              activeStep === steps.length - 1 ? 
+               <Button onClick={handleAddResume}>Finish</Button> :
+               <Button onClick={handleNext}>Next</Button>
+               }
+           
           </Box>
         </React.Fragment>
       )}
