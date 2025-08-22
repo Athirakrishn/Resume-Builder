@@ -10,7 +10,7 @@ import { FaHistory } from "react-icons/fa";
 import Edit from './Edit';
 
 
-function Preview({userInput}) {
+function Preview({userInput,finish}) {
   // console.log(userInput);
   
   return (

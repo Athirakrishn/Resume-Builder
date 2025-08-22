@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { ImTelegram } from 'react-icons/im';
 import { GiSkills } from 'react-icons/gi';
+import swal from 'sweetalert';
+import { addResumeAPI } from '../services/allAPI.JS';
 
 
-
-function Steps({userInput,setUserInput}) {
+function Steps({userInput,setUserInput,setFinish}) {
    const steps = ['Basic Information', 'Contact Details', 'Education Details','Work Experience','Skills & Certification','Skills & Preview'];
 
   const skillSuggestionArray =['HTML','CSS','BOOTSTRAP','PHP','REACT','MONGODB','NODEJS','JAVASCRIPT','TAILWIND'];
@@ -178,11 +179,22 @@ const removeSkill = (skill)=>{
   }
 
   //add resume
-  const handleAddResume=()=>{
+  const handleAddResume=async()=>{
   //api call 
   const {name,jobTitle,location}=userInput.personalData
   if(name&&jobTitle&&location){
-     alert("API CALLED")
+    try{
+    const result = await addResumeAPI(userInput)
+    console.log(result);
+    swal("Success ","Resume added Successfully!","Success");
+    setFinish(true)
+    }catch(err){
+    console.log(err);
+    swal("Success ","Resume added Failed!","Success");
+    setFinish(false)
+    }
+    //  alert("API CALLED")
+
   }else{
      alert("fill the form")
   }
