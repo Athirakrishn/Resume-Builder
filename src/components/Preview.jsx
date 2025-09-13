@@ -8,11 +8,46 @@ import Button from '@mui/material/Button';
 import { FaFileDownload } from "react-icons/fa";
 import { FaHistory } from "react-icons/fa";
 import Edit from './Edit';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { addDownloadHistoryAPI } from '../services/allAPI.js';
 
+function Preview({ userInput, setUserInput, finish, resumeId }) {
 
-function Preview({userInput,finish}) {
   // console.log(userInput);
-  
+  const [downloadStatus, setDownloadStatus] = useState(false)
+
+
+    const downloadCV = async () => {
+        // get element for taking screenshot
+        const input = document.getElementById("result")
+        const canvas = await html2canvas(input, { scale: 2 })
+        const imgURL = canvas.toDataURL('image/png')
+
+        const pdf = new jsPDF()
+        const pdfWidth = pdf.internal.pageSize.getWidth()
+        const pdfHeight = pdf.internal.pageSize.getHeight()
+
+        pdf.addImage(imgURL, 'PNG', 0, 0, pdfWidth, pdfHeight)
+        pdf.save('resume.pdf')
+
+        // get date
+        const localTimeDate = new Date()
+        const timeStamp = `${localTimeDate.toLocaleDateString()}, ${localTimeDate.toLocaleTimeString()}`
+        // console.log(timeStamp);
+
+
+        // add downloaded CV to history json using api call
+        try {
+            const result = await addDownloadHistoryAPI({ ...userInput, imgURL, timeStamp })
+            console.log(result);
+            setDownloadStatus(true)
+
+        } catch (err) {
+            console.log(err);
+
+        }
+    }
   return (
     <div >
 
@@ -27,7 +62,7 @@ function Preview({userInput,finish}) {
               {/* download */}
               <button className='btn fs-3' style={{color:"rgb(21, 70, 77)"}}> <FaFileDownload /></button>
               {/* edit */}
-              <div>
+              <div> 
                 <Edit/>
               </div>
               {/* history */}

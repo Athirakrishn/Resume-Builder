@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import swal from 'sweetalert';
-import { addResumeAPI } from '../services/allAPI.JS';
+import { addResumeAPI } from '../services/allAPI.js';
 
 
 function Steps({userInput,setUserInput,setFinish}) {
