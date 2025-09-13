@@ -6,8 +6,6 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { ImTelegram } from 'react-icons/im';
-import { GiSkills } from 'react-icons/gi';
 import swal from 'sweetalert';
 import { addResumeAPI } from '../services/allAPI.JS';
 
@@ -184,7 +182,7 @@ const removeSkill = (skill)=>{
   const {name,jobTitle,location}=userInput.personalData
   if(name&&jobTitle&&location){
     try{
-    const result = await addResumeAPI(userInput)
+    const result = await addResumeAPI(userInput) 
     console.log(result);
     swal("Success ","Resume added Successfully!","Success");
     setFinish(true)
