@@ -8,10 +8,37 @@ import Button from '@mui/material/Button';
 import { FaFileDownload } from "react-icons/fa";
 import { FaHistory } from "react-icons/fa";
 import Edit from './Edit';
-
+import html2canvas from 'html2canvas';
+import { jsPDF } from "jspdf";
 
 function Preview({userInput,finish}) {
   // console.log(userInput);
+  console.log(userInput);
+
+
+  const downloadCV = async()=>{
+    // get element for taking screenshot
+    const input = document.getElementById("result")
+    const canvas = await html2canvas(input,{scale:2})
+    const imgURL = canvas.toDataURL('image/png')
+
+    const pdf = new jsPDF()
+    const pdfWidth = pdf.internal.pageSize.getWidth()
+    const pdfHeight = pdf.internal.pageSize.getHeight()
+
+    pdf.addImage(imgURL,'PNG',0,0,pdfWidth,pdfHeight)
+    pdf.save('resume.pdf')
+
+    // get date
+    const localTimeDate = new Date()
+    const timeStamp = `${localTimeDate.toLocaleDateString()},${localTimeDate.toLocaleTimeString()}`
+    // console.log(timeStamp);
+    
+
+    // add downloaded CV to history json using api call
+    
+
+  }
   
   return (
     <div >
@@ -25,7 +52,7 @@ function Preview({userInput,finish}) {
          <Stack direction={'row'} sx={{justifyContent:"flex-end"}}>  
             <Stack direction={'row'}>
               {/* download */}
-              <button className='btn fs-3' style={{color:"rgb(21, 70, 77)"}}> <FaFileDownload /></button>
+              <button onClick={downloadCV}  className='btn fs-3' style={{color:"rgb(21, 70, 77)"}}> <FaFileDownload /></button>
               {/* edit */}
               <div>
                 <Edit/>
@@ -39,7 +66,11 @@ function Preview({userInput,finish}) {
             </Stack>
               </Stack>
          <Box component="section" >
-          <Paper elevation={3} sx={{ my:5, textAlign:"center" ,p: 5 }} > 
+          {/* <Paper elevation={3} sx={{ my:5, textAlign:"center" ,p: 5 }} > */}
+         <Paper id="result" elevation={3} sx={{my:5 ,textAlign: 'center', p: 5 }}>
+
+
+
            <h3>{userInput.personalData.name}</h3>
            <h5>{userInput.personalData.jobTitle}</h5>
            <p><span>{userInput.personalData.location}</span>|<span>{userInput.personalData.email} </span>|<span>{userInput.personalData.phone}</span></p>
@@ -75,6 +106,10 @@ function Preview({userInput,finish}) {
     
     </div>
   )
+
+
+
+
 }
 
 export default Preview
